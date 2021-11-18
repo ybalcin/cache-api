@@ -1,3 +1,4 @@
+// Package application provides access to the application core
 package application
 
 import (
