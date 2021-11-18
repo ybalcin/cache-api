@@ -1,4 +1,4 @@
-package ports
+package in
 
 import (
 	"github.com/ybalcin/cache-api/internal/core/application"

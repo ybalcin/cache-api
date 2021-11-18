@@ -1,6 +1,8 @@
 package services
 
-import "github.com/ybalcin/cache-api/internal/core/application/ports"
+import (
+	"github.com/ybalcin/cache-api/internal/core/application/ports/out"
+)
 
 type (
 	// CacheService interface for used to caching
@@ -11,12 +13,12 @@ type (
 	}
 
 	cacheService struct {
-		cachePort ports.Cache
+		cachePort out.Cache
 	}
 )
 
 // NewCacheService initializes new cache service
-func NewCacheService(cachePort ports.Cache) *cacheService {
+func NewCacheService(cachePort out.Cache) *cacheService {
 	return &cacheService{cachePort}
 }
 
