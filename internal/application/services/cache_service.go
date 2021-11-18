@@ -1,7 +1,7 @@
 package services
 
 import (
-	"github.com/ybalcin/cache-api/internal/core/application/ports/out"
+	"github.com/ybalcin/cache-api/internal/ports/out"
 )
 
 type (

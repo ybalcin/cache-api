@@ -1,7 +1,7 @@
 package in
 
 import (
-	"github.com/ybalcin/cache-api/internal/core/application"
+	"github.com/ybalcin/cache-api/internal/application"
 )
 
 type (

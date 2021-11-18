@@ -2,7 +2,7 @@
 package application
 
 import (
-	"github.com/ybalcin/cache-api/internal/core/application/services"
+	"github.com/ybalcin/cache-api/internal/application/services"
 	"github.com/ybalcin/cache-api/internal/infrastructure/adapters"
 )
 
