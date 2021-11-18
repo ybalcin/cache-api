@@ -1,14 +1,15 @@
 package services
 
 import (
+	"github.com/ybalcin/cache-api/internal/application/dtos"
 	"github.com/ybalcin/cache-api/internal/ports/out"
 )
 
 type (
 	// CacheService interface for used to caching
 	CacheService interface {
-		Set(key string, value string) error
-		Get(key string) (string, error)
+		Set(dto *dtos.CacheDto) error
+		Get(key string) (*dtos.CacheDto, error)
 		ClearAll()
 	}
 
@@ -23,13 +24,21 @@ func NewCacheService(cachePort out.Cache) *cacheService {
 }
 
 // Set sets a key-value pair in cache
-func (s *cacheService) Set(key string, value string) error {
-	return s.cachePort.Set(key, value)
+func (s *cacheService) Set(dto *dtos.CacheDto) error {
+	return s.cachePort.Set(dto.Key, dto.Value)
 }
 
 // Get gets a value by key from cache
-func (s *cacheService) Get(key string) (string, error) {
-	return s.cachePort.Get(key)
+func (s *cacheService) Get(key string) (*dtos.CacheDto, error) {
+	val, err := s.cachePort.Get(key)
+	if err != nil {
+		return nil, err
+	}
+
+	return &dtos.CacheDto{
+		Key:   key,
+		Value: val,
+	}, nil
 }
 
 // ClearAll clears all values in cache

@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b6d4810-d9c3-43ef-ae29-f99097f5343c" name="Changes" comment="some fixes">
+    <list default="true" id="5b6d4810-d9c3-43ef-ae29-f99097f5343c" name="Changes" comment="path fixes">
+      <change afterPath="$PROJECT_DIR$/internal/application/dtos/dtos.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/common/errors.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/application/services/cache_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/application/services/cache_service.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/cmd/http/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/cmd/http/http.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/application/application.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/application/application.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/application/ports/in/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/ports/in/http.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/application/ports/out/cache.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/ports/out/cache.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/application/services/cache_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/application/services/cache_service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/cmd/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/ports/in/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/ports/in/http.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,11 +54,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/internal/application/dtos" />
       <recent name="$PROJECT_DIR$/internal" />
+      <recent name="$PROJECT_DIR$/internal/shared/utilities" />
       <recent name="$PROJECT_DIR$/internal/core" />
       <recent name="$PROJECT_DIR$/internal/core/application/ports/out" />
-      <recent name="$PROJECT_DIR$/internal/core/application/ports/in" />
-      <recent name="$PROJECT_DIR$/internal/core/application/app" />
     </key>
   </component>
   <component name="RunManager" selected="Go Build.go build github.com/ybalcin/cache-api/internal/cmd">
@@ -145,7 +146,8 @@
     <MESSAGE value="inmemory package, application, ports, infra" />
     <MESSAGE value="port packages got fixed as in and out" />
     <MESSAGE value="some fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="some fixes" />
+    <MESSAGE value="path fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="path fixes" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
