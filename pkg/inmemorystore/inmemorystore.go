@@ -7,12 +7,25 @@ import (
 )
 
 type (
-	inMemStore map[string]string
+	storage map[string]string
+
+	// Client struct inmemory store client
+	Client struct {
+		interval int
+	}
+
+	cacheItem struct {
+		Key   string `json:"key"`
+		Value string `json:"value"`
+	}
+	cacheItems struct {
+		Data []cacheItem `json:"data"`
+	}
 )
 
 var (
 	lock  = sync.Mutex{}
-	cache = inMemStore{}
+	cache = storage{}
 
 	errEmptyKey    = newPackageError("key is empty!")
 	errEmptyValue  = newPackageError("value is empty!")
@@ -23,8 +36,17 @@ func newPackageError(message string) error {
 	return fmt.Errorf("inmemorystore: %s", message)
 }
 
-// Set sets a cacheVal for the cacheKey.
-func Set(key string, value string) error {
+// NewClient initializes new inmemorystore client.
+// param interval: cache file saving interval time as seconds
+// param path: cache file saving path
+func NewClient(interval int) *Client {
+	return &Client{
+		interval: interval,
+	}
+}
+
+// Set sets a key-value pair.
+func (c *Client) Set(key string, value string) error {
 	if key == "" {
 		return errEmptyKey
 	}
@@ -36,15 +58,15 @@ func Set(key string, value string) error {
 	defer lock.Unlock()
 
 	if cache == nil {
-		cache = make(map[string]string)
+		cache = storage{}
 	}
 
 	cache[key] = value
 	return nil
 }
 
-// Get retrieves a cacheVal by cacheKey.
-func Get(key string) (string, error) {
+// Get retrieves a value by key.
+func (c *Client) Get(key string) (string, error) {
 	if key == "" {
 		return "", errEmptyKey
 	}
@@ -61,9 +83,20 @@ func Get(key string) (string, error) {
 }
 
 // Flush clears all values that keeping in memory.
-func Flush() {
+func (c *Client) Flush() {
 	lock.Lock()
 	defer lock.Unlock()
 
 	cache = make(map[string]string)
+}
+
+// Load loads cache from last saved file
+func (c *Client) Load() {
+	lock.Lock()
+	defer lock.Unlock()
+
+	fileCache := getCacheFromFile()
+	if len(fileCache) > 0 {
+		cache = fileCache
+	}
 }

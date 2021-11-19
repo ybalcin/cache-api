@@ -18,7 +18,7 @@ func mustEqual(t *testing.T, actual, expected interface{}) {
 	}
 }
 
-func TestSet(t *testing.T) {
+func TestClient_Set(t *testing.T) {
 	tests := []struct {
 		key      string
 		value    string
@@ -29,19 +29,21 @@ func TestSet(t *testing.T) {
 		{"", testVal, errEmptyKey},
 	}
 
+	client := NewClient(0)
+
 	for _, c := range tests {
-		actual := Set(c.key, c.value)
+		actual := client.Set(c.key, c.value)
 		mustEqual(t, actual, c.expected)
 	}
 
 	cache = nil
 	for _, c := range tests {
-		actual := Set(c.key, c.value)
+		actual := client.Set(c.key, c.value)
 		mustEqual(t, actual, c.expected)
 	}
 }
 
-func TestGet(t *testing.T) {
+func TestClient_Get(t *testing.T) {
 	cache[testKey] = testVal
 	cache[testKey+"1"] = testVal + "1"
 
@@ -55,8 +57,10 @@ func TestGet(t *testing.T) {
 		{fmt.Sprint(time.Now().UnixNano()), errNotFoundKey},
 	}
 
+	client := NewClient(0)
+
 	for _, c := range tests {
-		value, err := Get(c.key)
+		value, err := client.Get(c.key)
 		if err != nil {
 			mustEqual(t, err, c.expected)
 			mustEqual(t, value, "")
@@ -67,17 +71,42 @@ func TestGet(t *testing.T) {
 	}
 
 	cache = nil
-	val, err := Get(testVal)
+	val, err := client.Get(testVal)
 	mustEqual(t, err, errNotFoundKey)
 	mustEqual(t, val, "")
 }
 
-func TestFlush(t *testing.T) {
-	cache = inMemStore{}
+func TestClient_Flush(t *testing.T) {
+	cache = storage{}
 	cache[testVal] = testVal
-	Flush()
 
-	val, err := Get(testVal)
+	client := NewClient(0)
+
+	client.Flush()
+
+	val, err := client.Get(testVal)
 	mustEqual(t, err, errNotFoundKey)
 	mustEqual(t, val, "")
+}
+
+func TestClient_Load(t *testing.T) {
+	client := NewClient(0)
+
+	client.Load()
+
+	if len(cache) <= 0 {
+		t.Fail()
+	}
+}
+
+func TestSave(t *testing.T) {
+	cache[testKey] = testVal
+	cache[testKey+"1"] = testVal + "1"
+
+	save(1)
+	if err := recover(); err != nil {
+		t.Fail()
+	}
+
+	//getLatestFile()
 }
