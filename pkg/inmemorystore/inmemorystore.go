@@ -3,6 +3,7 @@ package inmemorystore
 
 import (
 	"fmt"
+	"log"
 	"sync"
 )
 
@@ -40,9 +41,11 @@ func newPackageError(message string) error {
 // param interval: cache file saving interval time as seconds
 // param path: cache file saving path
 func NewClient(interval int) *Client {
-	return &Client{
+	cli := &Client{
 		interval: interval,
 	}
+
+	return cli
 }
 
 // Set sets a key-value pair.
@@ -98,5 +101,6 @@ func (c *Client) Load() {
 	fileCache := getCacheFromFile()
 	if len(fileCache) > 0 {
 		cache = fileCache
+		log.Println("File loaded.")
 	}
 }

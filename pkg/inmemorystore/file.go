@@ -32,6 +32,38 @@ func getCacheFromFile() storage {
 	return store
 }
 
+// StartSaveTask starts a task that saves cache to file in a specified interval time of seconds.
+func (c *Client) StartSaveTask() {
+	if c.interval <= 0 {
+		return
+	}
+
+	startSaveTask(c.interval)
+}
+
+func startSaveTask(interval int) {
+	finish := make(chan struct{}, 1)
+	finish <- struct{}{}
+
+	now := time.Now().UTC()
+
+	go func(t int, n time.Time) {
+		saveTime := n.Add(time.Second * time.Duration(t))
+
+		for {
+			n = time.Now().UTC()
+			if saveTime.Before(n) {
+				select {
+				case <-finish:
+					saveCacheToFile(finish)
+					n = time.Now().UTC()
+					saveTime = n.Add(time.Second * time.Duration(t))
+				}
+			}
+		}
+	}(interval, now)
+}
+
 func readFile() *cacheItems {
 	file := getLatestFile()
 	if file == nil {
@@ -99,14 +131,10 @@ func getLatestFile() *os.File {
 	return file
 }
 
-func save(interval int) {
-	// if interval is equal to zero then do nothing
-	if interval == 0 {
-		return
-	}
-
-	cacheItems := mapToStruct()
+func saveCacheToFile(finish chan struct{}) {
+	cacheItems := mapCacheToStruct()
 	if cacheItems == nil {
+		finish <- struct{}{}
 		return
 	}
 
@@ -121,9 +149,9 @@ func save(interval int) {
 		defer removeFile(file)
 	}
 	defer log.Printf("file saved: %s", file.Name())
+	finish <- struct{}{}
 }
 
-// go routine?
 func writeToFile(file *os.File, c *cacheItems) error {
 	b, err := json.Marshal(c)
 	if err != nil {
@@ -136,8 +164,8 @@ func writeToFile(file *os.File, c *cacheItems) error {
 	return nil
 }
 
-func mapToStruct() *cacheItems {
-	snapshot := createSnapshot()
+func mapCacheToStruct() *cacheItems {
+	snapshot := createCacheSnapshot()
 	if snapshot == nil {
 		return nil
 	}
@@ -155,7 +183,7 @@ func mapToStruct() *cacheItems {
 	}
 }
 
-func createSnapshot() storage {
+func createCacheSnapshot() storage {
 	lock.Lock()
 	defer lock.Unlock()
 

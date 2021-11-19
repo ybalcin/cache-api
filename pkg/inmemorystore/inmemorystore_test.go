@@ -103,7 +103,7 @@ func TestSave(t *testing.T) {
 	cache[testKey] = testVal
 	cache[testKey+"1"] = testVal + "1"
 
-	save(1)
+	//saveCacheToFile(1)
 	if err := recover(); err != nil {
 		t.Fail()
 	}
