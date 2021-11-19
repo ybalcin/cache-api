@@ -39,7 +39,6 @@ func newPackageError(message string) error {
 
 // NewClient initializes new inmemorystore client.
 // param interval: cache file saving interval time as seconds
-// param path: cache file saving path
 func NewClient(interval int) *Client {
 	cli := &Client{
 		interval: interval,
