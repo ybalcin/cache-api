@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b6d4810-d9c3-43ef-ae29-f99097f5343c" name="Changes" comment="file save, file load">
+    <list default="true" id="5b6d4810-d9c3-43ef-ae29-f99097f5343c" name="Changes" comment="comment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/application/application.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/application/application.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/inmemorystore/file.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/inmemorystore/file.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/application/dtos/dtos.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/application/dtos/dtos.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/inmemorystore/file.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/inmemorystore/inmemorystore_file.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/inmemorystore/inmemorystore.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/inmemorystore/inmemorystore.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/inmemorystore/inmemorystore_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/inmemorystore/inmemorystore_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +147,9 @@
     <MESSAGE value="path fixes" />
     <MESSAGE value="api" />
     <MESSAGE value="file save, file load" />
-    <option name="LAST_COMMIT_MESSAGE" value="file save, file load" />
+    <MESSAGE value="file save background task" />
+    <MESSAGE value="comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="comment" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

@@ -48,17 +48,18 @@ func startSaveTask(interval int) {
 	now := time.Now().UTC()
 
 	go func(t int, n time.Time) {
-		saveTime := n.Add(time.Second * time.Duration(t))
+		saveTime := n.Add(time.Minute * time.Duration(t))
 
 		for {
-			n = time.Now().UTC()
 			if saveTime.Before(n) {
 				select {
 				case <-finish:
 					saveCacheToFile(finish)
 					n = time.Now().UTC()
-					saveTime = n.Add(time.Second * time.Duration(t))
+					saveTime = n.Add(time.Minute * time.Duration(t))
 				}
+			} else {
+				n = time.Now().UTC()
 			}
 		}
 	}(interval, now)

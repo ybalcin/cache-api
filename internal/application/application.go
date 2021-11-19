@@ -14,7 +14,7 @@ type Application struct {
 
 // New initializes new application
 func New() *Application {
-	inMemoryClient := inmemorystore.NewClient(60)
+	inMemoryClient := inmemorystore.NewClient(1)
 	inMemAdapter := adapters.NewInMemoryCacheAdapter(inMemoryClient)
 	cacheService := services.NewCacheService(inMemAdapter)
 

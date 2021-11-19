@@ -4,6 +4,7 @@ package inmemorystore
 import (
 	"fmt"
 	"log"
+	"strings"
 	"sync"
 )
 
@@ -38,7 +39,7 @@ func newPackageError(message string) error {
 }
 
 // NewClient initializes new inmemorystore client.
-// param interval: cache file saving interval time as seconds
+// param interval: cache file saving interval time as minutes
 func NewClient(interval int) *Client {
 	cli := &Client{
 		interval: interval,
@@ -63,6 +64,7 @@ func (c *Client) Set(key string, value string) error {
 		cache = storage{}
 	}
 
+	key = strings.ReplaceAll(key, " ", "")
 	cache[key] = value
 	return nil
 }
