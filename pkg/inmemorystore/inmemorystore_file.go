@@ -17,6 +17,15 @@ const (
 	fileRegex    string = `\d+-data-\d+.json`
 )
 
+// StartSaveTask starts a task that saves cache to file in a specified interval time of minutes.
+func (c *Client) StartSaveTask() {
+	if c.interval <= 0 {
+		return
+	}
+
+	startSaveTask(c.interval)
+}
+
 func getCacheFromFile() storage {
 	c := readFile()
 	store := storage{}
@@ -32,18 +41,9 @@ func getCacheFromFile() storage {
 	return store
 }
 
-// StartSaveTask starts a task that saves cache to file in a specified interval time of seconds.
-func (c *Client) StartSaveTask() {
-	if c.interval <= 0 {
-		return
-	}
-
-	startSaveTask(c.interval)
-}
-
 func startSaveTask(interval int) {
 	finish := make(chan struct{}, 1)
-	finish <- struct{}{}
+	finish <- struct{}{} // for first hit
 
 	now := time.Now().UTC()
 

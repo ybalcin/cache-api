@@ -29,9 +29,9 @@ var (
 	lock  = sync.Mutex{}
 	cache = storage{}
 
-	errEmptyKey    = newPackageError("key is empty!")
-	errEmptyValue  = newPackageError("value is empty!")
-	errNotFoundKey = newPackageError("key not found!")
+	errEmptyKey    = newPackageError("key is empty")
+	errEmptyValue  = newPackageError("value is empty")
+	errNotFoundKey = newPackageError("key not found")
 )
 
 func newPackageError(message string) error {

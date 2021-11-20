@@ -89,17 +89,17 @@ func TestClient_Flush(t *testing.T) {
 	mustEqual(t, val, "")
 }
 
-func TestClient_Load(t *testing.T) {
-	client := NewClient(0)
+//func TestClient_Load(t *testing.T) {
+//	client := NewClient(1)
+//
+//	client.Load()
+//
+//	if len(cache) <= 0 {
+//		t.Fail()
+//	}
+//}
 
-	client.Load()
-
-	if len(cache) <= 0 {
-		t.Fail()
-	}
-}
-
-func TestSave(t *testing.T) {
+func TestClient_StartSaveTask(t *testing.T) {
 	cache[testKey] = testVal
 	cache[testKey+"1"] = testVal + "1"
 

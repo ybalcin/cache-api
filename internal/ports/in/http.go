@@ -27,6 +27,8 @@ const (
 	contentType     = "Content-Type"
 	applicationJson = "application/json"
 	requestId       = "X-Request-ID"
+
+	RequiredKey = "key is required"
 )
 
 var (
@@ -38,6 +40,11 @@ func NewHttpServer() *httpServer {
 	app := application.New()
 
 	return &httpServer{app}
+}
+
+// NewHttpServerWithApplication initializes new httpserver with application argument
+func NewHttpServerWithApplication(application *application.Application) *httpServer {
+	return &httpServer{Application: application}
 }
 
 // ServeHTTP middleware
@@ -53,9 +60,12 @@ func (h Handler) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set(contentType, applicationJson)
 
 	err := h.H(w, req)
-	if e, ok := recover().(error); ok && e != nil {
-		err = e
+	if err == nil {
+		if e, ok := recover().(error); ok {
+			err = e
+		}
 	}
+
 	if err != nil {
 		switch e := err.(type) {
 		case common.Error:
@@ -72,11 +82,11 @@ func (s *httpServer) SetKeyHandler(w http.ResponseWriter, req *http.Request) err
 	decoder := json.NewDecoder(req.Body)
 	var dto dtos.CacheDto
 	if err := decoder.Decode(&dto); err != nil {
-		return err
+		return common.NewStatusError(http.StatusBadRequest, err)
 	}
 
 	if err := s.Application.CacheService.Set(&dto); err != nil {
-		return common.StatusError{Code: http.StatusBadRequest, Err: err}
+		return common.NewStatusError(http.StatusBadRequest, err)
 	}
 
 	return nil
@@ -87,12 +97,12 @@ func (s *httpServer) GetValueHandler(w http.ResponseWriter, req *http.Request) e
 	values := strings.Split(req.RequestURI, "/")
 	key := values[len(values)-1]
 	if key == "" {
-		return common.StatusError{Code: http.StatusBadRequest, Err: errors.New("")}
+		return common.NewStatusError(http.StatusBadRequest, errors.New(RequiredKey))
 	}
 
 	dto, err := s.Application.CacheService.Get(key)
 	if err != nil {
-		return common.StatusError{Code: http.StatusNotFound, Err: err}
+		return common.NewStatusError(http.StatusNotFound, err)
 	}
 
 	json.NewEncoder(w).Encode(dto)

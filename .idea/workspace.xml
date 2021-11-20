@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b6d4810-d9c3-43ef-ae29-f99097f5343c" name="Changes" comment="comment">
+    <list default="true" id="5b6d4810-d9c3-43ef-ae29-f99097f5343c" name="Changes" comment="log request">
+      <change afterPath="$PROJECT_DIR$/internal/application/mock.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/infrastructure/adapters/inmemory_cache_adapter_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/ports/in/http_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/inmemorystore/mock.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/common/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/common/errors.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/ports/in/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/ports/in/http.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/inmemorystore/inmemorystore.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/inmemorystore/inmemorystore.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/inmemorystore/inmemorystore_file.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/inmemorystore/inmemorystore_file.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/inmemorystore/inmemorystore_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/inmemorystore/inmemorystore_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +31,14 @@
   <component name="GOROOT" url="file:///opt/homebrew/Cellar/go/1.17.2/libexec" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="213ZUHRuMPevX4bLeYHIxP4WVeO" />
   <component name="ProjectLevelVcsManager">
@@ -56,67 +72,73 @@
       <recent name="$PROJECT_DIR$/internal/core/application/ports/out" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build github.com/ybalcin/cache-api/internal/cmd">
-    <configuration name="go build github.com/ybalcin/cache-api/internal/cmd" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.go test ports">
+    <configuration name="TestHandler_ServeHTTP in github.com/ybalcin/cache-api/internal/ports/in" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="cache-api" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="github.com/ybalcin/cache-api/internal/cmd" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/internal/cmd/main.go" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestClient_Load in github.com/ybalcin/cache-api/pkg/inmemorystore" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="cache-api" />
-      <working_directory value="$PROJECT_DIR$/pkg/inmemorystore" />
+      <working_directory value="$PROJECT_DIR$/internal/ports/in" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="github.com/ybalcin/cache-api/pkg/inmemorystore" />
+      <package value="github.com/ybalcin/cache-api/internal/ports/in" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestClient_Load\E$" />
+      <pattern value="^\QTestHandler_ServeHTTP\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestSave in github.com/ybalcin/cache-api/pkg/inmemorystore" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestHttpServer_FlushHandler in github.com/ybalcin/cache-api/internal/ports/in" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="cache-api" />
-      <working_directory value="$PROJECT_DIR$/pkg/inmemorystore" />
+      <working_directory value="$PROJECT_DIR$/internal/ports/in" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="github.com/ybalcin/cache-api/pkg/inmemorystore" />
+      <package value="github.com/ybalcin/cache-api/internal/ports/in" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestSave\E$" />
+      <pattern value="^\QTestHttpServer_FlushHandler\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="go test inmemorystore" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestHttpServer_GetValueHandler in github.com/ybalcin/cache-api/internal/ports/in" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="cache-api" />
-      <working_directory value="$PROJECT_DIR$/pkg/inmemorystore" />
+      <working_directory value="$PROJECT_DIR$/internal/ports/in" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/ybalcin/cache-api/internal/ports/in" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestHttpServer_GetValueHandler\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestHttpServer_SetKeyHandler in github.com/ybalcin/cache-api/internal/ports/in" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="cache-api" />
+      <working_directory value="$PROJECT_DIR$/internal/ports/in" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/ybalcin/cache-api/internal/ports/in" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestHttpServer_SetKeyHandler\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go test ports" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="cache-api" />
+      <working_directory value="$PROJECT_DIR$/internal/ports" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="DIRECTORY" />
-      <directory value="$PROJECT_DIR$/pkg/inmemorystore" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go test pkg" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="cache-api" />
-      <working_directory value="$PROJECT_DIR$/pkg" />
-      <root_directory value="$PROJECT_DIR$" />
-      <kind value="DIRECTORY" />
-      <directory value="$PROJECT_DIR$/pkg" />
+      <package value="github.com/ybalcin/cache-api" />
+      <directory value="$PROJECT_DIR$/internal/ports" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build github.com/ybalcin/cache-api/internal/cmd" />
-        <item itemvalue="Go Test.TestClient_Load in github.com/ybalcin/cache-api/pkg/inmemorystore" />
-        <item itemvalue="Go Test.TestSave in github.com/ybalcin/cache-api/pkg/inmemorystore" />
-        <item itemvalue="Go Test.go test pkg" />
-        <item itemvalue="Go Test.go test inmemorystore" />
+        <item itemvalue="Go Test.go test ports" />
+        <item itemvalue="Go Test.TestHandler_ServeHTTP in github.com/ybalcin/cache-api/internal/ports/in" />
+        <item itemvalue="Go Test.TestHttpServer_FlushHandler in github.com/ybalcin/cache-api/internal/ports/in" />
+        <item itemvalue="Go Test.TestHttpServer_SetKeyHandler in github.com/ybalcin/cache-api/internal/ports/in" />
+        <item itemvalue="Go Test.TestHttpServer_GetValueHandler in github.com/ybalcin/cache-api/internal/ports/in" />
       </list>
     </recent_temporary>
   </component>
@@ -146,24 +168,15 @@
     <MESSAGE value="file save, file load" />
     <MESSAGE value="file save background task" />
     <MESSAGE value="comment" />
-    <option name="LAST_COMMIT_MESSAGE" value="comment" />
+    <MESSAGE value="log request" />
+    <option name="LAST_COMMIT_MESSAGE" value="log request" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/internal/ports/in/http.go</url>
-          <line>54</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/cache_api$go_test_pkg.out" NAME="go test pkg Coverage Results" MODIFIED="1637188997254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/cache_api$TestFlush_in_github_com_ybalcin_cache_api_pkg_inmemorystore.out" NAME="TestFlush in github.com/ybalcin/cache-api/pkg/inmemorystore Coverage Results" MODIFIED="1637177370948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/cache_api$go_test_ports.out" NAME="go test ports Coverage Results" MODIFIED="1637440524655" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
