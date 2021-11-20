@@ -11,9 +11,26 @@ import (
 type (
 	storage map[string]string
 
-	// Client struct inmemory store client
-	Client struct {
+	client struct {
 		interval int
+	}
+
+	// Client is interface that wraps the in memory cache operations
+	Client interface {
+		// AddToMemory sets a key-value pair.
+		AddToMemory(key string, value string) error
+
+		// GetFromMemory retrieves a value by key.
+		GetFromMemory(key string) (string, error)
+
+		// ClearAllMemory clears all values that keeping in memory.
+		ClearAllMemory()
+
+		// LoadToMemoryFromFile loads cache from last saved file
+		LoadToMemoryFromFile()
+
+		// StartSaveToFileFromMemoryTask starts a task that saves cache to file in a specified interval time of minutes.
+		StartSaveToFileFromMemoryTask()
 	}
 
 	cacheItem struct {
@@ -29,9 +46,9 @@ var (
 	lock  = sync.Mutex{}
 	cache = storage{}
 
-	errEmptyKey    = newPackageError("key is empty")
-	errEmptyValue  = newPackageError("value is empty")
-	errNotFoundKey = newPackageError("key not found")
+	ErrEmptyKey    = newPackageError("key is empty")
+	ErrEmptyValue  = newPackageError("value is empty")
+	ErrNotFoundKey = newPackageError("key not found")
 )
 
 func newPackageError(message string) error {
@@ -40,21 +57,21 @@ func newPackageError(message string) error {
 
 // NewClient initializes new inmemorystore client.
 // param interval: cache file saving interval time as minutes
-func NewClient(interval int) *Client {
-	cli := &Client{
+func NewClient(interval int) Client {
+	cli := &client{
 		interval: interval,
 	}
 
 	return cli
 }
 
-// Set sets a key-value pair.
-func (c *Client) Set(key string, value string) error {
+// AddToMemory sets a key-value pair.
+func (c *client) AddToMemory(key string, value string) error {
 	if key == "" {
-		return errEmptyKey
+		return ErrEmptyKey
 	}
 	if value == "" {
-		return errEmptyValue
+		return ErrEmptyValue
 	}
 
 	lock.Lock()
@@ -69,10 +86,10 @@ func (c *Client) Set(key string, value string) error {
 	return nil
 }
 
-// Get retrieves a value by key.
-func (c *Client) Get(key string) (string, error) {
+// GetFromMemory retrieves a value by key.
+func (c *client) GetFromMemory(key string) (string, error) {
 	if key == "" {
-		return "", errEmptyKey
+		return "", ErrEmptyKey
 	}
 
 	lock.Lock()
@@ -80,22 +97,22 @@ func (c *Client) Get(key string) (string, error) {
 
 	val, ok := cache[key]
 	if !ok {
-		return "", errNotFoundKey
+		return "", ErrNotFoundKey
 	}
 
 	return val, nil
 }
 
-// Flush clears all values that keeping in memory.
-func (c *Client) Flush() {
+// ClearAllMemory clears all values that keeping in memory.
+func (c *client) ClearAllMemory() {
 	lock.Lock()
 	defer lock.Unlock()
 
 	cache = make(map[string]string)
 }
 
-// Load loads cache from last saved file
-func (c *Client) Load() {
+// LoadToMemoryFromFile loads cache from last saved file
+func (c *client) LoadToMemoryFromFile() {
 	lock.Lock()
 	defer lock.Unlock()
 
@@ -104,4 +121,13 @@ func (c *Client) Load() {
 		cache = fileCache
 		log.Println("File loaded.")
 	}
+}
+
+// StartSaveToFileFromMemoryTask starts a task that saves cache to file in a specified interval time of minutes.
+func (c *client) StartSaveToFileFromMemoryTask() {
+	if c.interval <= 0 {
+		return
+	}
+
+	startSaveTask(c.interval)
 }

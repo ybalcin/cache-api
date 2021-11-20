@@ -4,17 +4,18 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b6d4810-d9c3-43ef-ae29-f99097f5343c" name="Changes" comment="log request">
-      <change afterPath="$PROJECT_DIR$/internal/application/mock.go" afterDir="false" />
+    <list default="true" id="5b6d4810-d9c3-43ef-ae29-f99097f5343c" name="Changes" comment="test continue">
       <change afterPath="$PROJECT_DIR$/internal/infrastructure/adapters/inmemory_cache_adapter_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/ports/in/http_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/inmemorystore/mock.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/infrastructure/adapters/mock.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/common/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/common/errors.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/ports/in/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/ports/in/http.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/application/application.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/application/application.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/application/services/cache_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/application/services/cache_service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/infrastructure/adapters/inmemory_cache_adapter.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/infrastructure/adapters/inmemory_cache_adapter.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/ports/out/cache.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/ports/out/cache.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/inmemorystore/inmemorystore.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/inmemorystore/inmemorystore.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/inmemorystore/inmemorystore_file.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/inmemorystore/inmemorystore_file.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/inmemorystore/inmemorystore_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/inmemorystore/inmemorystore_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/inmemorystore/mock.go" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +73,16 @@
       <recent name="$PROJECT_DIR$/internal/core/application/ports/out" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.go test ports">
+  <component name="RunManager" selected="Go Build.go build github.com/ybalcin/cache-api/internal/cmd">
+    <configuration name="go build github.com/ybalcin/cache-api/internal/cmd" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="cache-api" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/ybalcin/cache-api/internal/cmd" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/internal/cmd/main.go" />
+      <method v="2" />
+    </configuration>
     <configuration name="TestHandler_ServeHTTP in github.com/ybalcin/cache-api/internal/ports/in" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="cache-api" />
       <working_directory value="$PROJECT_DIR$/internal/ports/in" />
@@ -95,18 +105,6 @@
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
       <pattern value="^\QTestHttpServer_FlushHandler\E$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestHttpServer_GetValueHandler in github.com/ybalcin/cache-api/internal/ports/in" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="cache-api" />
-      <working_directory value="$PROJECT_DIR$/internal/ports/in" />
-      <root_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="github.com/ybalcin/cache-api/internal/ports/in" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <pattern value="^\QTestHttpServer_GetValueHandler\E$" />
       <method v="2" />
     </configuration>
     <configuration name="TestHttpServer_SetKeyHandler in github.com/ybalcin/cache-api/internal/ports/in" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -134,11 +132,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build github.com/ybalcin/cache-api/internal/cmd" />
         <item itemvalue="Go Test.go test ports" />
         <item itemvalue="Go Test.TestHandler_ServeHTTP in github.com/ybalcin/cache-api/internal/ports/in" />
         <item itemvalue="Go Test.TestHttpServer_FlushHandler in github.com/ybalcin/cache-api/internal/ports/in" />
         <item itemvalue="Go Test.TestHttpServer_SetKeyHandler in github.com/ybalcin/cache-api/internal/ports/in" />
-        <item itemvalue="Go Test.TestHttpServer_GetValueHandler in github.com/ybalcin/cache-api/internal/ports/in" />
       </list>
     </recent_temporary>
   </component>
@@ -169,7 +167,8 @@
     <MESSAGE value="file save background task" />
     <MESSAGE value="comment" />
     <MESSAGE value="log request" />
-    <option name="LAST_COMMIT_MESSAGE" value="log request" />
+    <MESSAGE value="test continue" />
+    <option name="LAST_COMMIT_MESSAGE" value="test continue" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

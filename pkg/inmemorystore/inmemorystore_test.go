@@ -25,20 +25,20 @@ func TestClient_Set(t *testing.T) {
 		expected interface{}
 	}{
 		{testKey, testVal, nil},
-		{testKey, "", errEmptyValue},
-		{"", testVal, errEmptyKey},
+		{testKey, "", ErrEmptyValue},
+		{"", testVal, ErrEmptyKey},
 	}
 
 	client := NewClient(0)
 
 	for _, c := range tests {
-		actual := client.Set(c.key, c.value)
+		actual := client.AddToMemory(c.key, c.value)
 		mustEqual(t, actual, c.expected)
 	}
 
 	cache = nil
 	for _, c := range tests {
-		actual := client.Set(c.key, c.value)
+		actual := client.AddToMemory(c.key, c.value)
 		mustEqual(t, actual, c.expected)
 	}
 }
@@ -53,14 +53,14 @@ func TestClient_Get(t *testing.T) {
 	}{
 		{testKey, testVal},
 		{testKey + "1", testVal + "1"},
-		{"", errEmptyKey},
-		{fmt.Sprint(time.Now().UnixNano()), errNotFoundKey},
+		{"", ErrEmptyKey},
+		{fmt.Sprint(time.Now().UnixNano()), ErrNotFoundKey},
 	}
 
 	client := NewClient(0)
 
 	for _, c := range tests {
-		value, err := client.Get(c.key)
+		value, err := client.GetFromMemory(c.key)
 		if err != nil {
 			mustEqual(t, err, c.expected)
 			mustEqual(t, value, "")
@@ -71,8 +71,8 @@ func TestClient_Get(t *testing.T) {
 	}
 
 	cache = nil
-	val, err := client.Get(testVal)
-	mustEqual(t, err, errNotFoundKey)
+	val, err := client.GetFromMemory(testVal)
+	mustEqual(t, err, ErrNotFoundKey)
 	mustEqual(t, val, "")
 }
 
@@ -82,17 +82,17 @@ func TestClient_Flush(t *testing.T) {
 
 	client := NewClient(0)
 
-	client.Flush()
+	client.ClearAllMemory()
 
-	val, err := client.Get(testVal)
-	mustEqual(t, err, errNotFoundKey)
+	val, err := client.GetFromMemory(testVal)
+	mustEqual(t, err, ErrNotFoundKey)
 	mustEqual(t, val, "")
 }
 
 //func TestClient_Load(t *testing.T) {
 //	client := NewClient(1)
 //
-//	client.Load()
+//	client.LoadToMemoryFromFile()
 //
 //	if len(cache) <= 0 {
 //		t.Fail()

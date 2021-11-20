@@ -2,14 +2,29 @@
 package application
 
 import (
+	"github.com/ybalcin/cache-api/internal/application/dtos"
 	"github.com/ybalcin/cache-api/internal/application/services"
 	"github.com/ybalcin/cache-api/internal/infrastructure/adapters"
 	"github.com/ybalcin/cache-api/pkg/inmemorystore"
 )
 
+type (
+	// cacheService is the interface that wraps the cache operations
+	cacheService interface {
+		// Set sets a key-value pair in cache
+		Set(dto *dtos.CacheDto) error
+
+		// Get gets a value by key from cache
+		Get(key string) (*dtos.CacheDto, error)
+
+		// ClearAll clears all values in cache
+		ClearAll()
+	}
+)
+
 // Application struct provides access to the application core
 type Application struct {
-	CacheService services.CacheService
+	CacheService cacheService
 }
 
 // New initializes new application
@@ -19,9 +34,9 @@ func New() *Application {
 	cacheService := services.NewCacheService(inMemAdapter)
 
 	// load file from disk and cache it
-	defer inMemoryClient.Load()
+	defer inMemoryClient.LoadToMemoryFromFile()
 	// start a save background task
-	defer inMemoryClient.StartSaveTask()
+	defer inMemoryClient.StartSaveToFileFromMemoryTask()
 
 	return &Application{cacheService}
 }

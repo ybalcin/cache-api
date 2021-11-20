@@ -6,13 +6,6 @@ import (
 )
 
 type (
-	// CacheService interface for used to caching
-	CacheService interface {
-		Set(dto *dtos.CacheDto) error
-		Get(key string) (*dtos.CacheDto, error)
-		ClearAll()
-	}
-
 	cacheService struct {
 		cachePort out.Cache
 	}
