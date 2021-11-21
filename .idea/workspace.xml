@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b6d4810-d9c3-43ef-ae29-f99097f5343c" name="Changes" comment="test continue">
-      <change afterPath="$PROJECT_DIR$/internal/application/services/cache_service_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/application/services/cache_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/application/services/cache_service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/infrastructure/adapters/inmemory_cache_adapter_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/infrastructure/adapters/inmemory_cache_adapter_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/infrastructure/adapters/mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/infrastructure/adapters/mock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/ports/in/http_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/ports/in/http_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/cmd/http/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/http/http.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,14 +59,32 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/internal/application/dtos" />
       <recent name="$PROJECT_DIR$/internal" />
       <recent name="$PROJECT_DIR$/internal/shared/utilities" />
       <recent name="$PROJECT_DIR$/internal/core" />
-      <recent name="$PROJECT_DIR$/internal/core/application/ports/out" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.TestNewCacheService in github.com/ybalcin/cache-api/internal/application/services">
+  <component name="RunManager" selected="Go Build.go build github.com/ybalcin/cache-api/cmd">
+    <configuration name="go build github.com/ybalcin/cache-api/cmd" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="cache-api" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/ybalcin/cache-api/cmd" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/cmd/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build github.com/ybalcin/cache-api/internal/cmd" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="cache-api" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/ybalcin/cache-api/internal/cmd" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/internal/cmd/main.go" />
+      <method v="2" />
+    </configuration>
     <configuration name="TestCacheService_ClearAll in github.com/ybalcin/cache-api/internal/application/services" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="cache-api" />
       <working_directory value="$PROJECT_DIR$/internal/application/services" />
@@ -93,30 +109,6 @@
       <pattern value="^\QTestCacheService_Get\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestCacheService_Set in github.com/ybalcin/cache-api/internal/application/services" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="cache-api" />
-      <working_directory value="$PROJECT_DIR$/internal/application/services" />
-      <root_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="github.com/ybalcin/cache-api/internal/application/services" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <pattern value="^\QTestCacheService_Set\E$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestInMemoryCacheAdapter_FlushCache in github.com/ybalcin/cache-api/internal/infrastructure/adapters" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="cache-api" />
-      <working_directory value="$PROJECT_DIR$/internal/infrastructure/adapters" />
-      <root_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="github.com/ybalcin/cache-api/internal/infrastructure/adapters" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <pattern value="^\QTestInMemoryCacheAdapter_FlushCache\E$" />
-      <method v="2" />
-    </configuration>
     <configuration name="TestNewCacheService in github.com/ybalcin/cache-api/internal/application/services" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="cache-api" />
       <working_directory value="$PROJECT_DIR$/internal/application/services" />
@@ -131,11 +123,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build github.com/ybalcin/cache-api/cmd" />
+        <item itemvalue="Go Build.go build github.com/ybalcin/cache-api/internal/cmd" />
         <item itemvalue="Go Test.TestNewCacheService in github.com/ybalcin/cache-api/internal/application/services" />
         <item itemvalue="Go Test.TestCacheService_ClearAll in github.com/ybalcin/cache-api/internal/application/services" />
         <item itemvalue="Go Test.TestCacheService_Get in github.com/ybalcin/cache-api/internal/application/services" />
-        <item itemvalue="Go Test.TestCacheService_Set in github.com/ybalcin/cache-api/internal/application/services" />
-        <item itemvalue="Go Test.TestInMemoryCacheAdapter_FlushCache in github.com/ybalcin/cache-api/internal/infrastructure/adapters" />
       </list>
     </recent_temporary>
   </component>
@@ -187,5 +179,6 @@
     <SUITE FILE_PATH="coverage/cache_api$go_test_pkg.out" NAME="go test pkg Coverage Results" MODIFIED="1637188997254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/cache_api$TestFlush_in_github_com_ybalcin_cache_api_pkg_inmemorystore.out" NAME="TestFlush in github.com/ybalcin/cache-api/pkg/inmemorystore Coverage Results" MODIFIED="1637177370948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/cache_api$go_test_ports.out" NAME="go test ports Coverage Results" MODIFIED="1637440524655" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/cache_api$go_test_cache_api.out" NAME="go test cache-api Coverage Results" MODIFIED="1637505488073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

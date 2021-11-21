@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/ybalcin/cache-api/internal/cmd/http"
+	"github.com/ybalcin/cache-api/cmd/http"
 )
 
 func main() {

@@ -10,6 +10,8 @@ import (
 
 const (
 	pathPrefix string = "/v1/cache"
+
+	port string = "8080"
 )
 
 func path(suffix string) string {
@@ -26,5 +28,6 @@ func StartServer() {
 	mux.Handle(path("/get/"), in.Handler{H: httpPort.GetValueHandler, Method: http.MethodGet})
 	mux.Handle(path("/flush"), in.Handler{H: httpPort.FlushHandler, Method: http.MethodDelete})
 
-	log.Fatal(http.ListenAndServe(":8080", mux))
+	log.Printf("http server listening on port: %s", port)
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), mux))
 }
