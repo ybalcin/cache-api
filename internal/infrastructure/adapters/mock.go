@@ -43,3 +43,31 @@ func (m *MockInMemoryStore) StartSaveToFileFromMemoryTask() {
 	m.StartSaveToFileFromMemoryTaskInvoked = true
 	m.StartSaveToFileFromMemoryTaskFn()
 }
+
+type (
+	MockCacheAdapter struct {
+		SetFn      func(key string, value string) error
+		SetInvoked bool
+
+		GetFn      func(key string) (string, error)
+		GetInvoked bool
+
+		FlushCacheFn func()
+		FlushInvoked bool
+	}
+)
+
+func (m *MockCacheAdapter) Set(key string, value string) error {
+	m.SetInvoked = true
+	return m.SetFn(key, value)
+}
+
+func (m *MockCacheAdapter) Get(key string) (string, error) {
+	m.GetInvoked = true
+	return m.GetFn(key)
+}
+
+func (m *MockCacheAdapter) FlushCache() {
+	m.FlushInvoked = true
+	m.FlushCacheFn()
+}

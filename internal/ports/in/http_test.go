@@ -41,6 +41,12 @@ func mustEqual(t *testing.T, actual, expected interface{}) {
 	}
 }
 
+func mustNotNil(t *testing.T, val interface{}) {
+	if val == nil {
+		t.Fatalf("%#v must not nil", val)
+	}
+}
+
 const (
 	dummyKey   = "key1"
 	dummyValue = "value1"
@@ -65,7 +71,7 @@ func TestHttpServer_SetKeyHandler(t *testing.T) {
 
 	for _, c := range testCases {
 
-		mockCacheService.GetFnInvoked = false
+		mockCacheService.SetFnInvoked = false
 		mockCacheService.SetFn = func(dto *dtos.CacheDto) error {
 			return c.expected
 		}

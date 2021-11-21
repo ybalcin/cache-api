@@ -6,6 +6,7 @@ import (
 )
 
 type (
+	// cacheService implements application.cacheService
 	cacheService struct {
 		cachePort out.Cache
 	}
