@@ -3,31 +3,25 @@ package http
 
 import (
 	"fmt"
+	"github.com/gofiber/fiber/v2"
 	"github.com/ybalcin/cache-api/internal/ports/in"
 	"log"
-	"net/http"
 )
 
 const (
-	pathPrefix string = "/v1/cache"
-
 	port string = "8080"
 )
-
-func path(suffix string) string {
-	return fmt.Sprintf("%s%s", pathPrefix, suffix)
-}
 
 // StartServer starts the http server
 func StartServer() {
 	httpPort := in.NewHttpServer()
 
-	mux := http.NewServeMux()
+	app := fiber.New()
 
-	mux.Handle(path("/set"), in.Handler{H: httpPort.SetKeyHandler, Method: http.MethodPost})
-	mux.Handle(path("/get/"), in.Handler{H: httpPort.GetValueHandler, Method: http.MethodGet})
-	mux.Handle(path("/flush"), in.Handler{H: httpPort.FlushHandler, Method: http.MethodDelete})
+	v1 := app.Group("/v1/cache")
+	v1.Post("/", httpPort.SetKeyHandler)
+	v1.Get("/:key", httpPort.GetValueHandler)
+	v1.Delete("/flush", httpPort.FlushHandler)
 
-	log.Printf("http server listening on port: %s", port)
-	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), mux))
+	log.Fatal(app.Listen(fmt.Sprintf(":%s", port)))
 }

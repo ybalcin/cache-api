@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b6d4810-d9c3-43ef-ae29-f99097f5343c" name="Changes" comment="test continue">
+    <list default="true" id="5b6d4810-d9c3-43ef-ae29-f99097f5343c" name="Changes" comment="README.md fixes">
+      <change afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/cmd/http/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/http/http.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/http/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/http/http.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/application/application.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/application/application.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/application/services/cache_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/application/services/cache_service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/ports/in/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/ports/in/http.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +27,11 @@
   </component>
   <component name="GOROOT" url="file:///opt/homebrew/Cellar/go/1.17.2/libexec" />
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -159,21 +167,11 @@
     <MESSAGE value="comment" />
     <MESSAGE value="log request" />
     <MESSAGE value="test continue" />
-    <option name="LAST_COMMIT_MESSAGE" value="test continue" />
+    <MESSAGE value="README.md fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="README.md fixes" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/internal/application/services/cache_service.go</url>
-          <line>26</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/cache_api$go_test_pkg.out" NAME="go test pkg Coverage Results" MODIFIED="1637188997254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

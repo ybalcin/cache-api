@@ -24,6 +24,10 @@ func (s *cacheService) Set(dto *dtos.CacheDto) error {
 
 // Get gets a value by key from cache
 func (s *cacheService) Get(key string) (*dtos.CacheDto, error) {
+	if key == "" {
+		// return error
+	}
+
 	val, err := s.cachePort.Get(key)
 	if err != nil {
 		return nil, err
